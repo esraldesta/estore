@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34330.188
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "frontend", "frontend", "{B64250C5-9EB7-4878-B34B-936377655EAC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Getway", "Getway", "{F2A53B36-640F-449D-9D7E-3D8E8544D9AC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Integration", "Integration", "{7A62AE24-A41C-4CF7-BAC1-702CDD4EDF3F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{E3C3053A-300C-436E-A03C-8D04055A75EC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Estore.Services.CouponAPI", "Estore.Services.CouponAPI\Estore.Services.CouponAPI.csproj", "{713D00CF-F431-468A-994A-A27DE4172ADE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{713D00CF-F431-468A-994A-A27DE4172ADE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{713D00CF-F431-468A-994A-A27DE4172ADE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{713D00CF-F431-468A-994A-A27DE4172ADE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{713D00CF-F431-468A-994A-A27DE4172ADE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{713D00CF-F431-468A-994A-A27DE4172ADE} = {E3C3053A-300C-436E-A03C-8D04055A75EC}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A554BF94-6924-400B-9E2C-3D9A4DC7C035}
+	EndGlobalSection
+EndGlobal
