@@ -21,6 +21,9 @@ namespace Store.Web.Controllers
             {
                 list = JsonConvert.DeserializeObject<List<CouponDto>>(Convert.ToString(response.Result));
             }
+            else {
+                TempData["error"] = response?.Message;
+            }
             return View(list);
         }
 
@@ -35,7 +38,13 @@ namespace Store.Web.Controllers
                 ResponseDto? response = await _couponService.CreateCouponAsync(model);
                 if (response != null && response.IsSuccess)
                 {
-                    return RedirectToAction(nameof(CouponIndex));
+					TempData["success"] = "Coupon created successfully";
+
+					return RedirectToAction(nameof(CouponIndex));
+                }
+                else
+                {
+                    TempData["error"] = response?.Message;
                 }
             }
             return View(model);
@@ -47,7 +56,11 @@ namespace Store.Web.Controllers
             if (response != null && response.IsSuccess)
             {
                CouponDto?  model = JsonConvert.DeserializeObject<CouponDto>(Convert.ToString(response.Result));
-               return View(model);
+				return View(model);
+            }
+            else
+            {
+                TempData["error"] = response?.Message;
             }
             return NotFound();
         }
@@ -58,7 +71,12 @@ namespace Store.Web.Controllers
             ResponseDto? response = await _couponService.DeleteCouponAsync(couponDto.CouponId);
             if (response != null && response.IsSuccess)
             {
-                return RedirectToAction(nameof(CouponIndex));
+				TempData["success"] = "Coupon deleted successfully";
+				return RedirectToAction(nameof(CouponIndex));
+            }
+            else
+            {
+                TempData["error"] = response?.Message;
             }
             return View(couponDto);
         }
