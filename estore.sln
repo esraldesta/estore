@@ -11,9 +11,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Integration", "Integration"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{E3C3053A-300C-436E-A03C-8D04055A75EC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Estore.Services.CouponAPI", "Estore.Services.CouponAPI\Estore.Services.CouponAPI.csproj", "{713D00CF-F431-468A-994A-A27DE4172ADE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Estore.Services.CouponAPI", "Estore.Services.CouponAPI\Estore.Services.CouponAPI.csproj", "{713D00CF-F431-468A-994A-A27DE4172ADE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Store.Web", "Store.Web\Store.Web.csproj", "{ABCF6E8C-F31E-4EA1-925A-1E238A884BD3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Store.Web", "Store.Web\Store.Web.csproj", "{ABCF6E8C-F31E-4EA1-925A-1E238A884BD3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Estore.Services.AuthAPI", "Estore.Services.AuthAPI\Estore.Services.AuthAPI.csproj", "{1DFD6C70-9B95-4ECF-8547-43CFD0331B36}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,6 +31,10 @@ Global
 		{ABCF6E8C-F31E-4EA1-925A-1E238A884BD3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ABCF6E8C-F31E-4EA1-925A-1E238A884BD3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ABCF6E8C-F31E-4EA1-925A-1E238A884BD3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1DFD6C70-9B95-4ECF-8547-43CFD0331B36}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1DFD6C70-9B95-4ECF-8547-43CFD0331B36}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1DFD6C70-9B95-4ECF-8547-43CFD0331B36}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1DFD6C70-9B95-4ECF-8547-43CFD0331B36}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -36,6 +42,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{713D00CF-F431-468A-994A-A27DE4172ADE} = {E3C3053A-300C-436E-A03C-8D04055A75EC}
 		{ABCF6E8C-F31E-4EA1-925A-1E238A884BD3} = {B64250C5-9EB7-4878-B34B-936377655EAC}
+		{1DFD6C70-9B95-4ECF-8547-43CFD0331B36} = {E3C3053A-300C-436E-A03C-8D04055A75EC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A554BF94-6924-400B-9E2C-3D9A4DC7C035}
