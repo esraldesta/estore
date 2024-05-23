@@ -70,18 +70,19 @@ namespace Estore.Services.AuthAPI.Services
 
 		public async Task<bool> assignRole(string email, string roleName)
 		{
-			var user = _db.ApplicationUsers.FirstOrDefault(u => u.Email.ToLower() == email.ToLower());
-			if (user != null) {
-				if (_roleManager.RoleExistsAsync(roleName).GetAwaiter().GetResult()) { 
-					_roleManager.CreateAsync(new IdentityRole(roleName)).GetAwaiter().GetResult();
-				
-				}
-				await _userManager.AddToRoleAsync(user, roleName);
-				return true;
-			}
+            var user = _db.ApplicationUsers.FirstOrDefault(u => u.Email.ToLower() == email.ToLower());
+            if (user != null)
+            {
+                if (!_roleManager.RoleExistsAsync(roleName).GetAwaiter().GetResult())
+                {
+                    //create role if it does not exist
+                    _roleManager.CreateAsync(new IdentityRole(roleName)).GetAwaiter().GetResult();
+                }
+                await _userManager.AddToRoleAsync(user, roleName);
+                return true;
+            }
+            return false;
 
-			return false;
-
-		}
+        }
 	}
 }

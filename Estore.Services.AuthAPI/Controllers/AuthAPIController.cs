@@ -48,7 +48,7 @@ namespace Estore.Services.AuthAPI.Controllers
 		public async Task<IActionResult> AssignRole([FromBody] RegistrationRequestDto model)
 		{
 			var assignRoleSuccessfull = await _authService.assignRole(model.Email,model.Role.ToUpper());
-			if (assignRoleSuccessfull)
+			if (!assignRoleSuccessfull)
 			{
 				_response.IsSuccess = false;
 				_response.Message = "Error encountered";
