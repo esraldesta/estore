@@ -14,7 +14,7 @@ namespace Estore.Services.AuthAPI.Services
 		public JwtTokenGenerator(IOptions<JwtOptions> jwtOptions) { 
 			_jwtOptions = jwtOptions.Value;
 		}
-		string IJwtTokenGenerator.GenerateToken(ApplicationUser applicationUser)
+		string IJwtTokenGenerator.GenerateToken(ApplicationUser applicationUser , IEnumerable<string> roles)
 		{
 			var tokenHandler = new JwtSecurityTokenHandler();
 			var key = Encoding.ASCII.GetBytes(_jwtOptions.Secret);
@@ -23,6 +23,9 @@ namespace Estore.Services.AuthAPI.Services
 				new Claim(JwtRegisteredClaimNames.Sub,applicationUser.Id),
 				new Claim(JwtRegisteredClaimNames.Name,applicationUser.UserName.ToString())
 			};
+
+			claimList.AddRange(roles.Select(role => new Claim(ClaimTypes.Role, role)));
+
 			var tokenDescriptor = new SecurityTokenDescriptor { 
 				Audience = _jwtOptions.Audience,
 				Issuer = _jwtOptions.Issuer,

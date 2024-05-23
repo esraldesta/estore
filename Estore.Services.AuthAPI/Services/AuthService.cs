@@ -53,7 +53,8 @@ namespace Estore.Services.AuthAPI.Services
 			if (user == null || isValid == false) {
 				return new LoginResponseDto() { User=null,Token=""};
 			}
-			var token = _jwtTokenGenerator.GenerateToken(user);
+			var roles = await _userManager.GetRolesAsync(user);
+			var token = _jwtTokenGenerator.GenerateToken(user,roles);
 			UserDto userDto = new() {
 				Email = user.Email,
 				Id = user.Id,

@@ -41,6 +41,7 @@ namespace Store.Web.Controllers
                 return RedirectToAction("Index", "Home");
             }
             else {
+                TempData["error"] = responseDto.Message;
                 ModelState.AddModelError("CustomError", responseDto.Message);
                 return View(obj);
             }
@@ -66,17 +67,22 @@ namespace Store.Web.Controllers
         {
 			ResponseDto result = await _authService.RegisterAsync(obj);
 			ResponseDto assignRole;
-			if (result != null && result.IsSuccess) {
-				if (string.IsNullOrEmpty(obj.Role))
-				{
-					obj.Role = SD.RoleCustomer;
-				}
-				assignRole = await _authService.AssignRoleAsync(obj);
+            if (result != null && result.IsSuccess)
+            {
+                if (string.IsNullOrEmpty(obj.Role))
+                {
+                    obj.Role = SD.RoleCustomer;
+                }
+                assignRole = await _authService.AssignRoleAsync(obj);
                 if (assignRole != null && assignRole.IsSuccess)
                 {
-					TempData["success"] = "Registration Successfull";
-					return RedirectToAction(nameof(Login));
-				}
+                    TempData["success"] = "Registration Successfull";
+                    return RedirectToAction(nameof(Login));
+                }
+            }
+            else { 
+                    TempData["error"] = result.Message;
+
             }
 
             var roleList = new List<SelectListItem>() {
@@ -110,8 +116,10 @@ namespace Store.Web.Controllers
                 new Claim(JwtRegisteredClaimNames.Name, jwt.Claims.FirstOrDefault(u => u.Type == JwtRegisteredClaimNames.Name).Value));
             identity.AddClaim(
                 new Claim(ClaimTypes.Name, jwt.Claims.FirstOrDefault(u => u.Type == JwtRegisteredClaimNames.Email).Value));
-
+            identity.AddClaim(
+                new Claim(ClaimTypes.Role, jwt.Claims.FirstOrDefault(u => u.Type == "role").Value));
             var principal = new ClaimsPrincipal(identity);
+
             await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme,principal);        
         }
     }

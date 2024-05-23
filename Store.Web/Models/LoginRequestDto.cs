@@ -1,9 +1,13 @@
-﻿namespace Store.Web.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Store.Web.Models
 {
 	public class LoginRequestDto
 	{
-		public string UserName { get; set; }
-		public string Password { get; set; }
+        [Required]
+        public string UserName { get; set; }
+        [Required]
+        public string Password { get; set; }
 
 	}
 }
