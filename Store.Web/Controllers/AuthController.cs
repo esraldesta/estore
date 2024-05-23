@@ -34,18 +34,18 @@ namespace Store.Web.Controllers
 
             if (responseDto != null && responseDto.IsSuccess)
             {
-                LoginResponseDto loginResponseDto = JsonConvert.DeserializeObject<LoginResponseDto>(Convert.ToString(responseDto.Result));
+                LoginResponseDto loginResponseDto =
+                    JsonConvert.DeserializeObject<LoginResponseDto>(Convert.ToString(responseDto.Result));
 
                 await SignInUser(loginResponseDto);
                 _tokenProvider.SetToken(loginResponseDto.Token);
                 return RedirectToAction("Index", "Home");
             }
-            else {
+            else
+            {
                 TempData["error"] = responseDto.Message;
-                ModelState.AddModelError("CustomError", responseDto.Message);
                 return View(obj);
             }
-
         }
 
 
