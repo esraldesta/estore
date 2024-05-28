@@ -1,6 +1,8 @@
 using AutoMapper;
-using Estore.Services.CouponAPI;
+using Estore.Services.ProductAPI;
 using Estore.Services.ProductAPI.Data;
+using Estore.Services.ProductAPI.Extensions;
+
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -22,6 +24,8 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.AddAppAuthentication();
+builder.Services.AddAuthorization();
 
 
 var app = builder.Build();
@@ -34,7 +38,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();

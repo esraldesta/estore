@@ -2,7 +2,7 @@
 using Estore.Services.ProductAPI.Models;
 using Estore.Services.ProductAPI.Models.Dto;
 
-namespace Estore.Services.CouponAPI
+namespace Estore.Services.ProductAPI
 {
     public class MappingConfig
     {
