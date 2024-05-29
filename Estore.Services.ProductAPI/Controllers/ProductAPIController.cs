@@ -10,7 +10,6 @@ namespace Estore.Services.ProductAPI.Controllers
 {
     [Route("api/product")]
     [ApiController]
-    [Authorize]
     public class ProductAPIController : ControllerBase
     {
         private readonly AppDbContext _db;
@@ -25,6 +24,8 @@ namespace Estore.Services.ProductAPI.Controllers
         }
 
         [HttpGet]
+        [Authorize]
+
         public ResponseDto Get() {
             try {
                 IEnumerable<Product> products = _db.Products.ToList();
