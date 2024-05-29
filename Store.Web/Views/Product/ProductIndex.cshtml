@@ -1,10 +1,9 @@
 ﻿@model IEnumerable<ProductDto>
-
 <div class="card shadow border-0 mt-4">
 	<div class="card-header bg-secondary bg-gradient ml-0 py-3">
 		<div class="row">
 			<div class="col-12 text-center">
-				<h1 class="text-white">Product List</h1>
+				<h1 class="text-white">Products List</h1>
 			</div>
 		</div>
 	</div>
@@ -20,21 +19,16 @@
 		<table class="table">
 			<thead>
 				<tr>
-
 					<th>
-						Product Name
-					</th>
-
-					<th>
-						Product Price
-					</th>
-
-					<th>
-						Minimum Description
+						Name
 					</th>
 					<th>
-						Product Category
+						Category Name
 					</th>
+					<th>
+						Price
+					</th>
+					<th></th>
 				</tr>
 			</thead>
 			<tbody>
@@ -45,16 +39,16 @@
 							@item.Name
 						</td>
 						<td>
+							@item.CategoryName
+						</td>
+						<td>
 							@((item.Price).ToString("c"))
 						</td>
 						<td>
-							@((item.Description))
-						</td>
-						<td>
-							@((item.CategoryName))
-						</td>
-						<td>
-							<a asp-action="ProductDelete" asp-route-productId="@item.ProductId" class="btn btn-danger">
+							<a class="btn btn-success" asp-action="ProductEdit" asp-route-productId="@item.ProductId">
+								<i class="bi bi-pencil-square"></i>
+							</a>
+							<a class="btn btn-danger" asp-action="ProductDelete" asp-route-productId="@item.ProductId">
 								<i class="bi bi-trash"></i>
 							</a>
 						</td>

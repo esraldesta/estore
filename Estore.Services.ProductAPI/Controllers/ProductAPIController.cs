@@ -10,7 +10,8 @@ namespace Estore.Services.ProductAPI.Controllers
 {
     [Route("api/product")]
     [ApiController]
-    public class ProductAPIController : ControllerBase
+	[Authorize]
+	public class ProductAPIController : ControllerBase
     {
         private readonly AppDbContext _db;
         private readonly IMapper _mapper;
@@ -55,7 +56,8 @@ namespace Estore.Services.ProductAPI.Controllers
         }
 
         [HttpPost]
-        public ResponseDto Post([FromBody] ProductDto productDto)
+		[Authorize(Roles = "ADMIN")]
+		public ResponseDto Post([FromBody] ProductDto productDto)
         {
             try
             {
@@ -74,7 +76,8 @@ namespace Estore.Services.ProductAPI.Controllers
         }
 
         [HttpPut]
-        public ResponseDto Put([FromBody] ProductDto productDto)
+		[Authorize(Roles = "ADMIN")]
+		public ResponseDto Put([FromBody] ProductDto productDto)
         {
             try
             {
@@ -93,7 +96,8 @@ namespace Estore.Services.ProductAPI.Controllers
 
         [HttpDelete]
         [Route("{id:int}")]
-        public ResponseDto Delete(int id)
+		[Authorize(Roles = "ADMIN")]
+		public ResponseDto Delete(int id)
         {
             try
             {
