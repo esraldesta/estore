@@ -28,8 +28,8 @@ namespace Store.Web.Service
         {
             return await _baseService.SendAsync(new RequestDTO()
             {
-                ApiType = SD.ApiType.POST,
-                Url = SD.ShoppingCartAPIBase + "/api/cart/GetCart" + userId
+                ApiType = SD.ApiType.GET,
+                Url = SD.ShoppingCartAPIBase + "/api/cart/GetCart/" + userId
 
             });
         }
