@@ -10,8 +10,7 @@ namespace Estore.Services.CouponAPI.Controllers
 {
     [Route("api/coupon")]
     [ApiController]
-    [Authorize]
-    public class CouponAPIController : ControllerBase
+re    public class CouponAPIController : ControllerBase
     {
         private readonly AppDbContext _db;
         private ResponseDto _response;
@@ -21,6 +20,7 @@ namespace Estore.Services.CouponAPI.Controllers
             _response = new ResponseDto();
             _mapper = mapper;
         }
+
         [HttpGet]
         public ResponseDto Get() {
             try { 
@@ -65,7 +65,7 @@ namespace Estore.Services.CouponAPI.Controllers
                 Coupon obj = _db.Coupons.First(u => u.CouponCode.ToLower() == code.ToLower());
 
                 _response.Result = _response.Result = _mapper.Map<CouponDto>(obj);
-                ;
+                
             }
             catch (Exception ex)
             {
@@ -77,7 +77,6 @@ namespace Estore.Services.CouponAPI.Controllers
         }
 
         [HttpPost]
-        [Authorize(Roles ="ADMIN")]
         public ResponseDto Post([FromBody] CouponDto couponDto)
         {
             try
@@ -99,7 +98,6 @@ namespace Estore.Services.CouponAPI.Controllers
 
 
         [HttpPut]
-        [Authorize(Roles = "ADMIN")]
         public ResponseDto Put([FromBody] CouponDto couponDto)
         {
             try
@@ -122,7 +120,6 @@ namespace Estore.Services.CouponAPI.Controllers
 
         [HttpDelete]
         [Route("{id:int}")]
-        [Authorize(Roles = "ADMIN")]
         public ResponseDto Delete(int id)
         {
             try
