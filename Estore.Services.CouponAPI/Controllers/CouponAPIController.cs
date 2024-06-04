@@ -10,7 +10,7 @@ namespace Estore.Services.CouponAPI.Controllers
 {
     [Route("api/coupon")]
     [ApiController]
-re    public class CouponAPIController : ControllerBase
+    public class CouponAPIController : ControllerBase
     {
         private readonly AppDbContext _db;
         private ResponseDto _response;
